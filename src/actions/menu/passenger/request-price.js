@@ -69,7 +69,7 @@ export default class PassengerRequestPrice extends Action {
    * if `value` is numeric, and returns error if `value` is not numeric.
    */
   post() {
-    value = 0;
+    let value = 0;
     const orderKey = uuid.v4();
     return new If({
       condition: new Numeric(value),
