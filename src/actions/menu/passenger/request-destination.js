@@ -75,7 +75,7 @@ export default class PassengerRequestDestination extends Action {
   post(value) {
     const orderKey = uuid.v4();
     return new If({
-      condition: new Numeric(value),
+      condition: new Numeric(0),
       ok: new CompositeResponse()
         .add(new UserStateResponse({ destination: value }))
         .add(new UserStateResponse({ price: 0 }))
