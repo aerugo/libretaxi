@@ -74,38 +74,31 @@ export default class PassengerRequestDestination extends Action {
    */
   post(value) {
     const orderKey = uuid.v4();
-    return new If({
-      condition: new Numeric(0),
-      ok: new CompositeResponse()
-        .add(new UserStateResponse({ destination: value }))
-        .add(new UserStateResponse({ price: 0 }))
-        .add(new SubmitOrderResponse({
-          orderKey,
-          passengerKey: this.user.userKey,
-          passengerLocation: this.user.state.location,
-          passengerDestination: this.user.state.destination,
-          price: 0,
-          createdAt: Firebase.database.ServerValue.TIMESTAMP,
-          requestedVehicleType: this.user.state.requestedVehicleType,
-        }))
-        .add(new CallActionResponse({
-          userKey: this.user.userKey,
-          route: 'show-message',
-          arg: {
-            expectedState: {
-              menuLocation: 'order-submitted',
-              currentOrderKey: orderKey,
-            },
-            message: this.t('on_timeout'),
-            path: 'passenger-index',
+    return new CompositeResponse()
+      .add(new UserStateResponse({ destination: value }))
+      .add(new SubmitOrderResponse({
+        orderKey,
+        passengerKey: this.user.userKey,
+        passengerLocation: this.user.state.location,
+        passengerDestination: this.user.state.destination,
+        price: value,
+        createdAt: Firebase.database.ServerValue.TIMESTAMP,
+        requestedVehicleType: this.user.state.requestedVehicleType,
+      }))
+      .add(new CallActionResponse({
+        userKey: this.user.userKey,
+        route: 'show-message',
+        arg: {
+          expectedState: {
+            menuLocation: 'order-submitted',
+            currentOrderKey: orderKey,
           },
-          delay: 20 * 60 * 1000,
-        }))
-        .add(new TextResponse({ message: '👌 OK!' }))
-        .add(new RedirectResponse({ path: 'blank-screen' })),
-      err: new CompositeResponse()
-        .add(new ErrorResponse({ message: this.t('on_timeout') }))
-        .add(new RedirectResponse({ path: 'passenger-index' })),
-    });
+          message: this.t('on_timeout'),
+          path: 'passenger-index',
+        },
+        delay: 20 * 60 * 1000,
+      }))
+      .add(new TextResponse({ message: '👌 OK!' }))
+      .add(new RedirectResponse({ path: 'blank-screen' })),
   }
 }
