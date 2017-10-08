@@ -1,7 +1,7 @@
 {
 	"select-user-type.who_you_are": "Hver ert þú? (þú getur breytt þessu síðar)",
 	"select-user-type.who_you_are_desc": "You must select one of these to begin with",
-	"select-user-type.driver": "Bílstjóri,",
+	"select-user-type.driver": "Bílstjóri",
 	"select-user-type.driver_desc": "User can be either a taxi driver, or a passenger. You must select this option now.",
 	"select-user-type.passenger": "Farþegi",
 	"select-user-type.passenger_desc": "User can be either a taxi driver, or a passenger. You must select this option now.",

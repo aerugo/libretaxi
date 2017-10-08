@@ -51,9 +51,9 @@ export default class RequestRadius extends Action {
   get() {
     return new OptionsResponse({
       rows: [
-        [{ label: this.t('option1'), value: '1' }],
-        [{ label: this.t('option3'), value: '3' }],
-        [{ label: this.t('option5'), value: '5' }],
+        [{ label: this.t('option1'), value: '5' }],
+        [{ label: this.t('option3'), value: '10' }],
+        [{ label: this.t('option5'), value: '20' }],
       ],
       defaultMessage: this.t('request_radius'),
     });

@@ -53,7 +53,6 @@ export default class SelectVehicleType extends Action {
       .add(new OptionsResponse({
         rows: [
           [{ label: this.t('car'), value: 'car' }],
-          [{ label: this.t('motorbike'), value: 'motorbike' }],
         ],
       }));
   }

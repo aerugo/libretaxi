@@ -78,30 +78,15 @@ export default class DriverOrderNew extends Action {
         new MetricDistance(this.i18n, args.distance).toString()) }))
       .add(new MapResponse({ location: args.from }))
       .add(new TextResponse({ message: this.t('to', args.to) }))
-      .add(new If({
-        condition: new ZeroPrice(args.price),
-        ok: new TextResponse({ message: this.t('price_not_set') }),
-        err: new TextResponse({ message: this.t('price', args.price) }),
-      }))
       .add(new TextResponse({ message: this.t('call_to_action') }))
-      .add(new If({
-        condition: new ZeroPrice(args.price),
-        ok: new InlineOptionsResponse({
-          rows: [
-            [{ label: this.t('set_my_price'), value: buttons.setMyPrice.guid }],
-          ],
-          defaultMessage: this.gt('default_inline_options_message'),
-        }),
-        err: new InlineOptionsResponse({
+      .add(new InlineOptionsResponse({
           rows: [
             [
               { label: this.t('send_my_number'), value: buttons.sendMyNumber.guid },
-              { label: this.t('set_my_price'), value: buttons.setMyPrice.guid },
             ],
           ],
           defaultMessage: this.gt('default_inline_options_message'),
-        }),
-      }))
+        }))
       .add(new RedirectResponse({ path: 'driver-index' }));
   }
 }

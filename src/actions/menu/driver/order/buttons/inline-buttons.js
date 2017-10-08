@@ -36,10 +36,6 @@ import uuid from 'uuid';
  */
 export default (args, driver) => { // eslint-disable-line
   return {
-    setMyPrice: {
-      response: setMyPrice(args, driver),
-      guid: uuid.v4(),
-    },
     sendMyNumber: {
       response: sendMyNumber(args, driver),
       guid: uuid.v4(),

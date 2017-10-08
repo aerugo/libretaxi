@@ -53,7 +53,6 @@ export default class PassengerIndex extends Action {
       .add(new OptionsResponse({
         rows: [
           [{ label: this.t('car'), value: 'car' }],
-          [{ label: this.t('motorbike'), value: 'motorbike' }],
           [{ label: this.t('s'), value: 'settings' }],
         ],
         defaultMessage: this.gt('default_options_message'),
@@ -73,11 +72,10 @@ export default class PassengerIndex extends Action {
     const response = new CompositeResponse();
 
     switch (value) {
-      case 'motorbike':
       case 'car':
         response.add(new TextResponse({ message: '👌 OK!' }));
         response.add(new UserStateResponse({ requestedVehicleType: value }));
-        response.add(new RedirectResponse({ path: 'passenger-verify-cash' }));
+        response.add(new RedirectResponse({ path: 'passenger-request-location' }));
         break;
       case 'settings':
         response.add(new RedirectResponse({ path: 'settings' }));
