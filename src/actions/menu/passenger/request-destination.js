@@ -81,8 +81,8 @@ export default class PassengerRequestDestination extends Action {
         orderKey,
         passengerKey: this.user.userKey,
         passengerLocation: this.user.state.location,
-        passengerDestination: value,
-        price: 0,
+        passengerDestination: this.user.state.destination,
+        price: this.user.state.price,
         createdAt: Firebase.database.ServerValue.TIMESTAMP,
         requestedVehicleType: this.user.state.requestedVehicleType,
       }))
