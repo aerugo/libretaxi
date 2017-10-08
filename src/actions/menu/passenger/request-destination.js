@@ -81,7 +81,7 @@ export default class PassengerRequestDestination extends Action {
         passengerKey: this.user.userKey,
         passengerLocation: this.user.state.location,
         passengerDestination: this.user.state.destination,
-        price: 0,
+        price: value,
         createdAt: Firebase.database.ServerValue.TIMESTAMP,
         requestedVehicleType: this.user.state.requestedVehicleType,
       }))
@@ -99,6 +99,6 @@ export default class PassengerRequestDestination extends Action {
         delay: 20 * 60 * 1000,
       }))
       .add(new TextResponse({ message: '👌 OK!' }))
-      .add(new RedirectResponse({ path: 'blank-screen' })),
+      .add(new RedirectResponse({ path: 'blank-screen' }))
   }
 }
