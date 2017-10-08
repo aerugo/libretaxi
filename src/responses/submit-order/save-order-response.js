@@ -35,7 +35,6 @@ export default class SaveOrderResponse extends
     'passengerKey',
     'passengerLocation',
     'passengerDestination',
-    'price',
     'createdAt',
     'requestedVehicleType',
   ])) {
