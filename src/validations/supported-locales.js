@@ -28,8 +28,9 @@
  * @see https://mzl.la/2jRpmTI
  */
 const localeMap = new Map();
-localeMap.set('en', 'English');
 localeMap.set('is', 'Íslenska');
+localeMap.set('en', 'English');
+localeMap.set('pl', '🇵Polski');
 
 /**
  * @typedef SupportedLocales
