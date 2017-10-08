@@ -75,6 +75,7 @@ export default class PassengerRequestDestination extends Action {
   post(value) {
     const orderKey = uuid.v4();
     return new CompositeResponse()
+      .add(new UserStateResponse({ price: 0 }))
       .add(new UserStateResponse({ destination: value }))
       .add(new SubmitOrderResponse({
         orderKey,
